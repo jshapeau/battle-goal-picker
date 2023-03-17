@@ -1,0 +1,10 @@
+{
+    "/images": {
+        "target": "https://github.com/any2cards/worldhaven/blob/master/images/",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/images": ""
+          }
+    }
+}
