@@ -1,9 +1,12 @@
+//ANGULAR
 import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
-import { BattleGoal } from '../battlegoal';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+//APP
 import { BattleGoalDataService, LocalService } from '../services'
 import { ArrayShuffler } from '../utilities';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { UserSettings } from '../types'
+import { UserSettings, BattleGoal } from '../types'
+import defaultUserSettings from '../../assets/data/default_user_settings.json'
 
 @Component({
   selector: 'app-battlegoals',
@@ -13,52 +16,43 @@ import { UserSettings } from '../types'
 })
 export class BattlegoalsComponent implements OnInit{
   
-  defaultUserSettings: UserSettings = {
-    'partyName': 'Your Party Name',
-    'numberToDraw': '3',
-    'playerNumber': '1',
-    'expansion': 'Gloomhaven',
-    'scenarioNumber': '1',
-    'attemptNumber': '1'
-  }
-
-  battleGoals: BattleGoal[] = [];
-  selectedBattleGoals: BattleGoal[] = [];
-  
-  partyName: string
-  numberToDraw: number
-  playerNumber: number
-  expansion: string
-  scenarioNumber: string
-  attemptNumber: string
+  defaultUserSettings: UserSettings
+  battleGoals: BattleGoal[] = []
+  selectedBattleGoals: BattleGoal[] = []
+  userSettings: UserSettings
 
   constructor(private dataService: BattleGoalDataService, private arrayShuffler: ArrayShuffler, private settings: LocalService, public dialog: MatDialog) {
-    this.partyName = this.settings.getData('partyName') ?? this.defaultUserSettings.partyName;
-    this.numberToDraw = parseInt(this.settings.getData('numberToDraw') ?? this.defaultUserSettings.numberToDraw)
-    this.playerNumber = parseInt(this.settings.getData('playerNumber') ?? this.defaultUserSettings.playerNumber)
-    this.scenarioNumber = this.settings.getData('scenarioNumber') ?? this.defaultUserSettings.scenarioNumber
-    this.attemptNumber = this.settings.getData('attemptNumber') ?? this.defaultUserSettings.attemptNumber
-    this.expansion = this.settings.getData('expansion') ?? this.defaultUserSettings.expansion;
+    this.defaultUserSettings = defaultUserSettings as UserSettings
+    this.userSettings = defaultUserSettings
+
+    //Set user settings from cache, or fallback to defaults.
+    this.userSettings.partyName = this.settings.getData('partyName') ?? this.defaultUserSettings.partyName
+    this.userSettings.numberToDraw = this.settings.getData('numberToDraw') ? Number(this.settings.getData('numberToDraw')) : this.defaultUserSettings.numberToDraw
+    this.userSettings.playerNumber =  this.settings.getData('playerNumber') ? Number(this.settings.getData('playerNumber')) : this.defaultUserSettings.playerNumber
+    this.userSettings.scenarioNumber = this.settings.getData('scenarioNumber') ?? this.defaultUserSettings.scenarioNumber
+    this.userSettings.attemptNumber = this.settings.getData('attemptNumber') ?? this.defaultUserSettings.attemptNumber
+    this.userSettings.expansion = this.settings.getData('expansion') ?? this.defaultUserSettings.expansion
   }
 
-  ngOnInit() {
-
-  }
-
+  ngOnInit() {}
+  
   cacheData(key: string, value: any) {
     value = String(value)
-    this.settings.saveData(key, value);
+    this.settings.saveData(key, value)
   }
 
+  /**
+   * Entry point for selecting battle goals. Opens Dialog component showing results.
+   */
   chooseBattleGoals(): void {
 
-    const startingDraw: number = (this.playerNumber - 1) * this.numberToDraw;
-    const endingDraw: number = (startingDraw + this.numberToDraw);
+    const startingDraw: number = (this.userSettings.playerNumber - 1) * this.userSettings.numberToDraw
+    const endingDraw: number = (startingDraw + this.userSettings.numberToDraw)
 
-    this.dataService.Find(undefined, this.expansion).subscribe(
+    this.dataService.find(undefined, this.userSettings.expansion).subscribe(
       result => { 
-        this.battleGoals = result as BattleGoal[];
-        this.battleGoals = this.battleGoals.filter(item => item.name != 'battle-goals-back');
+        this.battleGoals = result as BattleGoal[]
+        this.battleGoals = this.battleGoals.filter(item => item.name != 'battle-goals-back')
         this.battleGoals = this.shuffleDeck()
         this.selectedBattleGoals = this.sliceDeck(startingDraw, endingDraw)
         this.dialog.open(BattleGoalDialog, {
@@ -69,16 +63,16 @@ export class BattlegoalsComponent implements OnInit{
   }
 
   private shuffleDeck(): BattleGoal[] {
-    const seed: string = this.partyName + this.scenarioNumber + this.attemptNumber
-    return this.arrayShuffler.shuffle(this.battleGoals, seed);
+    const seed: string = this.userSettings.partyName + this.userSettings.scenarioNumber + this.userSettings.attemptNumber
+    return this.arrayShuffler.shuffle(this.battleGoals, seed)
   }
 
   private sliceDeck(startingDraw: number, endingDraw: number): BattleGoal[] {
     function* range(from: number, to: number, step: number = 1) {
       let value = from;
       while (value <= to) {
-        yield value;
-        value += step;
+        yield value
+        value += step
       }
     }
     

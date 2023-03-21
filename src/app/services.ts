@@ -1,53 +1,58 @@
 import { HttpClient } from "@angular/common/http"
 import { Injectable, Inject } from '@angular/core'
-
-import { BattleGoal } from './types'
-
-import { Item } from './types'
 import { Observable, of } from 'rxjs'
 
+import { BattleGoal, Item } from './types'
+
 export interface DataSource<DataType> {
-
-    Find (name?: string, expansion?: string): Observable<DataType[]>;
-    FindAll (): DataType[];
-
+    find (name?: string, expansion?: string): Observable<DataType[]>
+    findAll (): Observable<DataType[]>
 }
 
 @Injectable({
     providedIn: 'root'
 })
+
+
 export class JsonDataSource<DataType extends Item> implements DataSource<DataType> {
-    private data: DataType[];
+    private data: DataType[]
     
     constructor(@Inject(Object) private JsonData: object) {
-        this.data = this.Parse(JsonData);
+        this.data = this.parse(JsonData)
     }
     
-    Parse(data: object): DataType[] {
+    private parse(data: object): DataType[] {
         try {
-            const result: DataType[] = data as DataType[];
-            return result;
+            const result: DataType[] = data as DataType[]
+            return result
         }
         catch(e) {
             //Needs proper error handling.
-            console.log("ERROR: Improperly formatted data.");
-            return [];
+            console.log("ERROR: Improperly formatted data.")
+            return []
         }
     }
 
-    Find(id?: string, expansion?: string ): Observable<DataType[]> {
+    /**
+     * Filters Item data as the intersection on parameters.
+     * 
+     * @param id Filter criteria for item name or id
+     * @param expansion Filter criteria for item expansion
+     * @returns Array representing the intersection of the provided paramters.
+     */
+    find(id?: string, expansion?: string ): Observable<DataType[]> {
         return of(this.data.filter(item => 
                                     (item.name == id || !id) &&
                                     (item.expansion == expansion || !expansion)
                                 ));
     }
 
-    FindSingle(id: string): DataType {
-        return this.data[0];
+    findSingle(id: string): DataType {
+        return this.data[0]
     }
 
-    FindAll(): DataType[] {
-        return this.data;
+    findAll(): Observable<DataType[]> {
+        return of(this.data)
     }
 
 }
@@ -58,59 +63,38 @@ export class LocalBattleGoalDataSource extends JsonDataSource<BattleGoal> {
     }
 }
 
+
+
 @Injectable({
     providedIn: 'root'
 })
 export class DataService<DataType> {
-    readonly dataSource: DataSource<DataType>;
+    readonly dataSource: DataSource<DataType>
 
     constructor (@Inject('BattlegoalDataSource') dataSource: DataSource<DataType>) {
-        this.dataSource = dataSource;
+        this.dataSource = dataSource
     }
 
-    Find (id?: string, expansion?: string): Observable<DataType[]> {
-        return this.dataSource.Find(undefined, expansion);
+    /**
+     * Fetches data from associated data source.
+     * 
+     * @param id Filter criteria for item name or id
+     * @param expansion Filter criteria for item expansion
+     * @returns Observable providing an array representing the intersection of the provided paramters.
+     */
+    find(id?: string, expansion?: string): Observable<DataType[]> {
+        return this.dataSource.find(undefined, expansion)
     }
 
-    async FindAll (): Promise<DataType[]> {
-        return this.dataSource.FindAll();
+    findAll(): Observable<DataType[]> {
+        return this.dataSource.findAll()
     }
 }
 
 @Injectable({
     providedIn: 'root'
 })
-export class BattleGoalDataService extends DataService<BattleGoal> {
-
-}
-
-// @Injectable({
-//     providedIn: 'root'
-// })
-// export class BattleGoalDataService {
-
-
-//     constructor(private dataSource: JsonDataSource<BattleGoal>, private api: HttpClient) {
-
-//     }
-
-//     GetBattleGoal() {
-//         return this.api.get('localhost:7000/battlegoals/aggressor');
-//     }
-
-//     GetAllBattleGoals() {
-//         return this.api.get('http://localhost:7000/battlegoals/all');
-//     }
-
-//     Find(expansion: string) {
-//         return this.dataSource.Find(undefined,expansion)
-//     }
-//     GetBattleGoals(expansion: string) {
-        
-//         return this.dataSource.Find(undefined,expansion)
-//         return this.api.get(`http://localhost:7000/battlegoals?expansion=${expansion}`);
-//     }
-// }
+export class BattleGoalDataService extends DataService<BattleGoal> {}
 
 @Injectable({
     providedIn: 'root'
@@ -120,17 +104,18 @@ export class LocalService {
     constructor() { }
 
     public saveData(key: string, value: string) {
-        localStorage.setItem(key, value);
+        localStorage.setItem(key, value)
     }
 
     public getData(key: string): string | null {
         return localStorage.getItem(key)
     }
+
     public removeData(key: string) {
-        localStorage.removeItem(key);
+        localStorage.removeItem(key)
     }
 
     public clearData() {
-        localStorage.clear();
+        localStorage.clear()
     }
 }
