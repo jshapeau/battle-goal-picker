@@ -32,11 +32,15 @@ export class BattlegoalsComponent implements OnInit{
     this.userSettings.scenarioNumber = this.settings.getData('scenarioNumber') ?? this.defaultUserSettings.scenarioNumber
     this.userSettings.attemptNumber = this.settings.getData('attemptNumber') ?? this.defaultUserSettings.attemptNumber
     this.userSettings.expansion = this.settings.getData('expansion') ?? this.defaultUserSettings.expansion
+    this.userSettings.theme = this.settings.getData('theme') ?? this.defaultUserSettings.theme
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.swapTheme(this.userSettings.theme)
+  }
   
   cacheData(key: string, value: any) {
+    console.log("cache")
     value = String(value)
     this.settings.saveData(key, value)
   }
@@ -83,7 +87,21 @@ export class BattlegoalsComponent implements OnInit{
 
     return slice
   }
+
+  swapTheme(themeName: string) {
+    
+    themeName = themeName.replace(/\s+/g, '')
+    const themeTag = themeName == "Frosthaven" || themeName == "frosthaven-theme" ? "frosthaven-theme" : "gloomhaven-theme"
+    const body = document.body
+
+    body?.classList.remove(this.userSettings.theme)
+    this.userSettings.theme = themeTag
+    this.cacheData('theme', themeTag)
+    body?.classList.add(themeTag)
+  }
 }
+
+
 
 @Component({
   selector: 'app-battlegoals-dialog',

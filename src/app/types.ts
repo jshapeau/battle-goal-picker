@@ -31,4 +31,5 @@ export interface UserSettings {
     expansion: string
     scenarioNumber: string
     attemptNumber: string
+    theme: string
   }

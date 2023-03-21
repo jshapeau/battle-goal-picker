@@ -53,13 +53,19 @@
                                 </mat-form-field>
                             </div>
                             <div class="options-row flex">
-                                <mat-button-toggle-group [(ngModel)]="userSettings.expansion" name="expansion" aria-label="Expansion" (focusout)="(this.cacheData('expansion', (this.userSettings.expansion)))">
+                                <mat-button-toggle-group [(ngModel)]="userSettings.expansion" name="expansion" aria-label="Expansion" (change)="this.swapTheme($event.value)" (change)="(this.cacheData('expansion', (this.userSettings.expansion)))">
                                     <mat-button-toggle value="Gloomhaven">Gloomhaven</mat-button-toggle>
                                     <mat-button-toggle value="Frosthaven">Frosthaven</mat-button-toggle>
                                     <mat-button-toggle value="Jaws Of The Lion">Jaws of the Lion</mat-button-toggle>
                                     <!-- <mat-button-toggle value="crimson scales">Crimson Scales</mat-button-toggle> -->
                                 </mat-button-toggle-group>
                             </div>
+                            <!-- <div class="options-row flex">
+                                <mat-button-toggle-group [(ngModel)]="userSettings.theme" name="theme" aria-label="Expansion" (change)="this.swapTheme($event.value)">
+                                    <mat-button-toggle value="gh-theme">Gloomhaven</mat-button-toggle>
+                                    <mat-button-toggle value="fh-theme">Frosthaven</mat-button-toggle>
+                                </mat-button-toggle-group>
+                            </div> -->
                         </div>
                     </mat-tab>
 

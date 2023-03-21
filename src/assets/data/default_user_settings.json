@@ -2,7 +2,8 @@
     "partyName": "Your Party Name",
     "numberToDraw": 3,
     "playerNumber": 1,
-    "expansion": "Gloomhaven",
+    "expansion": "Frosthaven",
     "scenarioNumber": "1",
-    "attemptNumber": "1"
+    "attemptNumber": "1",
+    "theme": "frosthaven-theme"
   }

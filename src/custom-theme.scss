@@ -92,16 +92,50 @@ $battlegoal-picker-gh-theme: mat.define-light-theme((
   )
 ));
 
-.fh-theme{
-  @include mat.all-component-themes($battlegoal-picker-theme);
-}
+// $battlegoal-picker-primary-dark: mat.define-palette($md-fh, 800);
+// $battlegoal-picker-accent-dark: mat.define-palette($md-gh, 700);
+// $battlegoal-picker-warn-dark: mat.define-palette(mat.$red-palette);
 
-.gh-theme{
-  @include mat.all-component-themes($battlegoal-picker-gh-theme);
-}
+// $battlegoal-picker-dark-theme: mat.define-dark-theme((
+//   color: (
+//     primary: $battlegoal-picker-primary-dark,
+//     accent: $battlegoal-picker-accent-dark,
+//     warn: $battlegoal-picker-warn-dark,
+//   )
+// ));
 
+
+// $battlegoal-picker-gh-primary-dark: mat.define-palette($md-gh, 800);
+// $battlegoal-picker-gh-accent-dark: mat.define-palette($md-fh, 700);
+// $battlegoal-picker-gh-warn-dark: mat.define-palette(mat.$red-palette);
+
+// $battlegoal-picker-gh-dark-theme: mat.define-dark-theme((
+//   color: (
+//     primary: $battlegoal-picker-gh-primary-dark,
+//     accent: $battlegoal-picker-gh-accent-dark,
+//     warn: $battlegoal-picker-gh-warn-dark,
+//   )
+// ));
 
 @include mat.all-component-themes($battlegoal-picker-theme);
+
+.frosthaven-theme{
+  @include mat.all-component-colors($battlegoal-picker-theme);
+}
+
+.gloomhaven-theme{
+  @include mat.all-component-colors($battlegoal-picker-gh-theme);
+}
+
+
+
+// .gh-dark-theme{
+//   @include mat.all-component-themes($battlegoal-picker-gh-dark-theme);
+// }
+
+// .fh-dark-theme{
+//   @include mat.all-component-themes($battlegoal-picker-dark-theme);
+// }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
