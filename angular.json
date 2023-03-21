@@ -78,6 +78,7 @@
           },
           "defaultConfiguration": "development",
           "options": {
+            "disableHostCheck": true,
             "browserTarget": "battlegoal-picker:build",
             "proxyConfig": "./proxy.conf.json"
           }

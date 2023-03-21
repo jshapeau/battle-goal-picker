@@ -3,123 +3,67 @@
 
     <mat-card>
         <mat-card-content>
-<mat-tab-group  [color]="'primary'">
-    
-    <mat-tab>
-        <ng-template mat-tab-label class="foo2">
-            <div class="foo">Battle Goals</div>
-        </ng-template>
+            <mat-tab-group  [color]="'primary'">
+                <mat-tab>
+                    <ng-template mat-tab-label class="foo2">
+                        Battle Goals
+                    </ng-template>
+                    <div id="battle-goals">
+                        <div id="draw-container">
+                            <div class="options-row flex">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Scenario Number</mat-label>
+                                    <input matInput id="scenarioNumber" [(ngModel)]="scenarioNumber" placeholder="Scenario Number" (focusout)="(this.cacheData('scenarioNumber', (this.scenarioNumber)))">
+                                </mat-form-field>
 
-        
-        <div id="battle-goals">
-            <div id="draw-container">
-            <div class="options-row flex">
-                <mat-form-field appearance="fill">
-                    <mat-label>Scenario Number</mat-label>
-                    <input matInput id="scenarioNumber" [(ngModel)]="scenarioNumber" placeholder="Scenario Number" (focusout)="(this.cacheData('scenarioNumber', (this.scenarioNumber)))">
-                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Attempt Number</mat-label>
+                                    <input matInput id="attemptNumber" [(ngModel)]="attemptNumber" placeholder="Attempt Number" (focusout)="(this.cacheData('attemptNumber', (this.attemptNumber)))">
+                                </mat-form-field>
+                            </div>
 
-            <mat-form-field appearance="fill">
-                <mat-label>Attempt Number</mat-label>
-                <input matInput id="attemptNumber" [(ngModel)]="attemptNumber" placeholder="Attempt Number" (focusout)="(this.cacheData('attemptNumber', (this.attemptNumber)))">
-            </mat-form-field>
-            </div>
-            <div class="battle-goal-image" id="battle-goal-back">
-                <!-- <img src = "http://localhost:4200/images/battle-goals/frosthaven/fh-battle-goals-back.png?raw=true">     -->
-                <img src = "../assets/gh-battle-goals-back.png">    
-            </div>
-                <div class="button-row" id="draw-button">
-                    <button mat-raised-button color="primary" (click)="chooseBattleGoals()">Draw!</button>  
-                </div>
+                            <div class="battle-goal-image" id="battle-goal-back">
+                                <img src = "../assets/gh-battle-goals-back.png">    
+                            </div>
+
+                            <div class="button-row" id="draw-button">
+                                <button mat-raised-button color="primary" (click)="chooseBattleGoals()">Draw!</button>  
+                            </div>
+                        </div>
+
+                    </div>
+                </mat-tab>
                 
-            </div>
+                    <mat-tab label="Settings">
+                        <div id="options">
+                            <div class="options-row flex">
+                                <mat-form-field appearance="fill">
+                                    <mat-label for="number-draws">Number of Draws: </mat-label>
+                                    <input matInput type="number" [(ngModel)]="numberToDraw" max="6" placeholder="number of draws" (focusout)="(this.cacheData('numberToDraw', (this.numberToDraw)))">
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label for="player-number">Player Number: </mat-label>
+                                    <input matInput type="number" [(ngModel)]="playerNumber" type="number" max="6" placeholder="player number" (focusout)="(this.cacheData('playerNumber', (this.playerNumber)))">
+                                </mat-form-field>
+                            </div>
+                            <div class="options-row flex">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Party Name</mat-label>
+                                    <input matInput id="party-name" [(ngModel)]="partyName" placeholder="Party Name" (focusout)="(this.cacheData('partyName', (this.partyName)))">
+                                </mat-form-field>
+                            </div>
+                            <div class="options-row flex">
+                                <mat-button-toggle-group [(ngModel)]="expansion" name="expansion" aria-label="Expansion" (focusout)="(this.cacheData('expansion', (this.expansion)))">
+                                    <mat-button-toggle value="Gloomhaven">Gloomhaven</mat-button-toggle>
+                                    <mat-button-toggle value="Frosthaven">Frosthaven</mat-button-toggle>
+                                    <mat-button-toggle value="Jaws Of The Lion">Jaws of the Lion</mat-button-toggle>
+                                    <!-- <mat-button-toggle value="crimson scales">Crimson Scales</mat-button-toggle> -->
+                                </mat-button-toggle-group>
+                            </div>
+                        </div>
+                    </mat-tab>
 
-
-
-            
-        </div>
-    </mat-tab>
-    
-    <mat-tab label="Settings">
-        <div id="options">
-            <div class="options-row flex">
-                <mat-form-field appearance="fill">
-                    <mat-label for="number-draws">Number of Draws: </mat-label>
-                    <input matInput type="number" [(ngModel)]="numberToDraw" placeholder="number of draws" (focusout)="(this.cacheData('numberToDraw', (this.numberToDraw)))">
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                    <mat-label for="player-number">Player Number: </mat-label>
-                    <input matInput type="number" [(ngModel)]="playerNumber" type="number" placeholder="player number" (focusout)="(this.cacheData('playerNumber', (this.playerNumber)))">
-                </mat-form-field>
-            </div>
-            <div class="options-row flex">
-                <mat-form-field appearance="fill">
-                    <mat-label>Party Name</mat-label>
-                    <input matInput id="party-name" [(ngModel)]="partyName" placeholder="Party Name" (focusout)="(this.cacheData('partyName', (this.partyName)))">
-                </mat-form-field>
-            </div>
-            <div class="options-row flex">
-                <mat-button-toggle-group [(ngModel)]="expansion" name="expansion" aria-label="Expansion" (focusout)="(this.cacheData('expansion', (this.expansion)))">
-                    <mat-button-toggle value="Gloomhaven">Gloomhaven</mat-button-toggle>
-                    <mat-button-toggle value="Frosthaven">Frosthaven</mat-button-toggle>
-                    <mat-button-toggle value="Jaws Of The Lion">Jaws of the Lion</mat-button-toggle>
-                    <!-- <mat-button-toggle value="crimson scales">Crimson Scales</mat-button-toggle> -->
-                </mat-button-toggle-group>
-            </div>
-        </div>
-       
-        
-</mat-tab>
-</mat-tab-group>
-        <!-- <button mat-raised-button (click)="sidenav.toggle()">Toggle drawer</button> -->
-    </mat-card-content>
-</mat-card>    
-    
-
-       
-
-            <!-- <h3>Settings</h3>
-            <div>
-            <h4>Expansion</h4> -->
-            
-
-            <!-- <h4>Number of Draws</h4> -->
-
-
-            
-            <!-- <button type="button" (click)="chooseBattleGoals()">
-                <div id="draw-overlay">
-                    Draw!
-
-                </div>
-            </button> -->
-
-            <!-- <div>
-                <label for="seed">Seed: </label>
-                <input id="seed" [(ngModel)]="seed" placeholder="seed">
-            </div> 
-
-            <div>
-                <label for="seed">Player Number: </label>
-                <input id="seed" type="number" [(ngModel)]="playerNumber" placeholder="player number">
-            </div> 
-
-            <div>
-                <label for="seed">Number of Draws: </label>
-                <input id="seed" type="number" [(ngModel)]="numberToDraw" placeholder="number of draws">
-            </div>  -->
-            
-
-            <!-- 
-            <ul class="battlegoals">
-                <li *ngFor="let selectedBattleGoal of selectedBattleGoals">
-                    <span class="singleBattleGoal">{{selectedBattleGoal.name}} -- {{selectedBattleGoal.expansion}} </span>
-                    
-                </li>
-
-            </ul>
-    -->
-
-
-
+            </mat-tab-group>
+        </mat-card-content>
+    </mat-card>    
 </div>
