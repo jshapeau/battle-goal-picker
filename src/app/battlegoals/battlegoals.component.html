@@ -4,6 +4,7 @@
     <mat-card>
         <mat-card-content>
             <mat-tab-group  [color]="'primary'">
+
                 <mat-tab>
                     <ng-template mat-tab-label class="foo2">
                         Battle Goals
@@ -30,7 +31,6 @@
                                 <button mat-raised-button color="primary" (click)="chooseBattleGoals()">Draw!</button>  
                             </div>
                         </div>
-
                     </div>
                 </mat-tab>
                 
@@ -60,12 +60,9 @@
                                     <!-- <mat-button-toggle value="crimson scales">Crimson Scales</mat-button-toggle> -->
                                 </mat-button-toggle-group>
                             </div>
-                            <!-- <div class="options-row flex">
-                                <mat-button-toggle-group [(ngModel)]="userSettings.theme" name="theme" aria-label="Expansion" (change)="this.swapTheme($event.value)">
-                                    <mat-button-toggle value="gh-theme">Gloomhaven</mat-button-toggle>
-                                    <mat-button-toggle value="fh-theme">Frosthaven</mat-button-toggle>
-                                </mat-button-toggle-group>
-                            </div> -->
+                            <p>&nbsp;<a href="https://github.com/jshapeau/battle-goal-picker" target="_blank">View on GitHub</a></p>
+                            
+                            
                         </div>
                     </mat-tab>
 

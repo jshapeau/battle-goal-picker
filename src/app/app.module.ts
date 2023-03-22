@@ -25,6 +25,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 //DATA SOURCES
 import JsonData from '../assets/data/battlegoals.json';
@@ -46,7 +47,7 @@ import JsonData from '../assets/data/battlegoals.json';
     HttpClientModule,
     FormsModule,
 
-    //UI
+    //UI  
     MatSlideToggleModule,
     MatFormFieldModule,
     MatInputModule,
@@ -56,7 +57,8 @@ import JsonData from '../assets/data/battlegoals.json';
     MatCardModule,
     MatSidenavModule,
     MatTabsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule
   ],
   providers: [
     { provide: 'BattlegoalDataSource', useFactory: () => (new LocalBattleGoalDataSource(JsonData)) },

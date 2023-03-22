@@ -104,7 +104,6 @@ $battlegoal-picker-gh-theme: mat.define-light-theme((
 //   )
 // ));
 
-
 // $battlegoal-picker-gh-primary-dark: mat.define-palette($md-gh, 800);
 // $battlegoal-picker-gh-accent-dark: mat.define-palette($md-fh, 700);
 // $battlegoal-picker-gh-warn-dark: mat.define-palette(mat.$red-palette);
@@ -126,8 +125,6 @@ $battlegoal-picker-gh-theme: mat.define-light-theme((
 .gloomhaven-theme{
   @include mat.all-component-colors($battlegoal-picker-gh-theme);
 }
-
-
 
 // .gh-dark-theme{
 //   @include mat.all-component-themes($battlegoal-picker-gh-dark-theme);

@@ -40,7 +40,6 @@ export class BattlegoalsComponent implements OnInit{
   }
   
   cacheData(key: string, value: any) {
-    console.log("cache")
     value = String(value)
     this.settings.saveData(key, value)
   }
@@ -100,8 +99,6 @@ export class BattlegoalsComponent implements OnInit{
     body?.classList.add(themeTag)
   }
 }
-
-
 
 @Component({
   selector: 'app-battlegoals-dialog',
