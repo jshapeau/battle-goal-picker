@@ -11,15 +11,6 @@ export interface Item extends DataItem {
 
 export interface BattleGoal extends Item {}
 
-// export interface BattleGoal
-// {
-//     name: string;
-//     expansion: string;
-//     points: number;
-//     image: string;
-//     xws: string;
-// }
-
 export type DataTypes = {
     "BattleGoal": BattleGoal,
 }

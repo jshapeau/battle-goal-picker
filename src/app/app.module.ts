@@ -39,7 +39,8 @@ import JsonData from '../assets/data/battlegoals.json';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
+    // ServiceWorkerModule.register('ngsw-worker.js', {
+    ServiceWorkerModule.register('../service-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000'
     }),

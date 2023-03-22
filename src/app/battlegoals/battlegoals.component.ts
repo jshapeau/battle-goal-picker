@@ -20,6 +20,7 @@ export class BattlegoalsComponent implements OnInit{
   battleGoals: BattleGoal[] = []
   selectedBattleGoals: BattleGoal[] = []
   userSettings: UserSettings
+  battleGoalCache: string = ''
 
   constructor(private dataService: BattleGoalDataService, private arrayShuffler: ArrayShuffler, private settings: LocalService, public dialog: MatDialog) {
     this.defaultUserSettings = defaultUserSettings as UserSettings
@@ -33,10 +34,13 @@ export class BattlegoalsComponent implements OnInit{
     this.userSettings.attemptNumber = this.settings.getData('attemptNumber') ?? this.defaultUserSettings.attemptNumber
     this.userSettings.expansion = this.settings.getData('expansion') ?? this.defaultUserSettings.expansion
     this.userSettings.theme = this.settings.getData('theme') ?? this.defaultUserSettings.theme
+    console.log(this.userSettings.expansion)
   }
 
   ngOnInit() {
     this.swapTheme(this.userSettings.theme)
+    this.initializeStandaloneCacheListeners()
+    
   }
   
   cacheData(key: string, value: any) {
@@ -88,7 +92,6 @@ export class BattlegoalsComponent implements OnInit{
   }
 
   swapTheme(themeName: string) {
-    
     themeName = themeName.replace(/\s+/g, '')
     const themeTag = themeName == "Frosthaven" || themeName == "frosthaven-theme" ? "frosthaven-theme" : "gloomhaven-theme"
     const body = document.body
@@ -98,6 +101,48 @@ export class BattlegoalsComponent implements OnInit{
     this.cacheData('theme', themeTag)
     body?.classList.add(themeTag)
   }
+
+    /**
+   * Caches data for offline use whan application is used in Standalone mode.
+   */
+    private initializeStandaloneCacheListeners() {
+      const pwaMode: string = this.getPwaDisplayMode()
+      if (pwaMode == 'browser' || pwaMode == 'twa') {
+        this.cacheAllData()
+        console.log("Cache: pwaMode")
+      }
+  
+      window.addEventListener('appinstalled', () => {
+        this.cacheAllData()
+        console.log("Cache: appInstalled")
+      })
+  
+      window.matchMedia('(display-mode: standalone)').addEventListener('change', (evt) => {
+        if (evt.matches) {
+          this.cacheAllData()
+          console.log("Cache: displayChanged")
+        }
+      })
+    }
+  
+    private getPwaDisplayMode(): string {
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+      if (document.referrer.startsWith('android-app://')) {
+        return 'twa';
+      } else if (('standalone' in window.navigator) && (window.navigator['standalone']) || isStandalone) {
+        return 'standalone';
+      }
+      return 'browser';
+    }
+  
+    /**
+     * Temporary runtime caching strategy
+     */
+    private cacheAllData(): void {
+      this.dataService.findAll().subscribe(result => { 
+        result.forEach(battleGoal => this.battleGoalCache += `<img src='../../assets/${battleGoal.image}'>`)
+      })
+    }
 }
 
 @Component({
