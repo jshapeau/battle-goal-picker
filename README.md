@@ -1,5 +1,7 @@
-# Battlegoal Picker
-    This appllication simulates the Battle Goal decks for [Gloomhaven](https://cephalofair.com/products/gloomhaven), [Frosthaven](https://cephalofair.com/pages/frosthaven), and [Jaws of the Lion](https://cephalofair.com/products/gloomhaven-jaws-of-the-lion).
+# Battle Goal Picker
+    Click [here](https://battlgoalpicker.fly.io/) to use the app.
+    
+    Battle Goal Picker simulates the Battle Goal decks for [Gloomhaven](https://cephalofair.com/products/gloomhaven), [Frosthaven](https://cephalofair.com/pages/frosthaven), and [Jaws of the Lion](https://cephalofair.com/products/gloomhaven-jaws-of-the-lion).
     
     This app is intended to streamline online play, or for groups that wish to minimize the usage of physical components to reduce set-up and tear-down time.  See [Installation](#Installation) for instructions on installing as a standalone application or for offline use.
     
