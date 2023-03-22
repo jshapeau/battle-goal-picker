@@ -34,7 +34,6 @@ export class BattlegoalsComponent implements OnInit{
     this.userSettings.attemptNumber = this.settings.getData('attemptNumber') ?? this.defaultUserSettings.attemptNumber
     this.userSettings.expansion = this.settings.getData('expansion') ?? this.defaultUserSettings.expansion
     this.userSettings.theme = this.settings.getData('theme') ?? this.defaultUserSettings.theme
-    console.log(this.userSettings.expansion)
   }
 
   ngOnInit() {
@@ -107,20 +106,17 @@ export class BattlegoalsComponent implements OnInit{
    */
     private initializeStandaloneCacheListeners() {
       const pwaMode: string = this.getPwaDisplayMode()
-      if (pwaMode == 'browser' || pwaMode == 'twa') {
+      if (pwaMode == 'standalone' || pwaMode == 'twa') {
         this.cacheAllData()
-        console.log("Cache: pwaMode")
       }
   
       window.addEventListener('appinstalled', () => {
         this.cacheAllData()
-        console.log("Cache: appInstalled")
       })
   
       window.matchMedia('(display-mode: standalone)').addEventListener('change', (evt) => {
         if (evt.matches) {
           this.cacheAllData()
-          console.log("Cache: displayChanged")
         }
       })
     }
@@ -134,13 +130,14 @@ export class BattlegoalsComponent implements OnInit{
       }
       return 'browser';
     }
-  
+    
     /**
      * Temporary runtime caching strategy
      */
     private cacheAllData(): void {
       this.dataService.findAll().subscribe(result => { 
-        result.forEach(battleGoal => this.battleGoalCache += `<img src='../../assets/${battleGoal.image}'>`)
+        result.forEach(battleGoal => 
+          fetch(`../../assets/${battleGoal.image}`).then( response => {const _ = result} ))
       })
     }
 }
