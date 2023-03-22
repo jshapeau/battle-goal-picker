@@ -1,6 +1,6 @@
 # Battle Goal Picker
 
-## [Current Online Version](https://battlgoalpicker.fly.io/)
+## [Current Online Version](https://battlegoals.fly.dev/)
 
 Battle Goal Picker simulates the Battle Goal decks for [Gloomhaven](https://cephalofair.com/products/gloomhaven), [Frosthaven](https://cephalofair.com/pages/frosthaven), and [Jaws of the Lion](https://cephalofair.com/products/gloomhaven-jaws-of-the-lion).
 
