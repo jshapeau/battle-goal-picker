@@ -831,5 +831,383 @@
     "expansion": "Jaws Of The Lion",
     "image": "battle-goals/jaws-of-the-lion/jl-weakling.png",
     "xws": "weakling"
+  },
+  {
+    "name": "acrobatic",
+    "points": 119,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-acrobatic.png",
+    "xws": "st-acrobatic"
+  },
+  {
+    "name": "ambusher",
+    "points": 120,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-ambusher.png",
+    "xws": "st-ambusher"
+  },
+  {
+    "name": "assassin",
+    "points": 121,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-assassin.png",
+    "xws": "st-assassin"
+  },
+  {
+    "name": "assistant",
+    "points": 122,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-assistant.png",
+    "xws": "st-assistant"
+  },
+  {
+    "name": "bastion",
+    "points": 123,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-bastion.png",
+    "xws": "st-bastion"
+  },
+  {
+    "name": "bully",
+    "points": 124,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-bully.png",
+    "xws": "st-bully"
+  },
+  {
+    "name": "contagious",
+    "points": 125,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-contagious.png",
+    "xws": "st-contagious"
+  },
+  {
+    "name": "covetous",
+    "points": 126,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-covetous.png",
+    "xws": "st-covetous"
+  },
+  {
+    "name": "cuddler",
+    "points": 127,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-cuddler.png",
+    "xws": "st-cuddler"
+  },
+  {
+    "name": "discerning",
+    "points": 128,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-discerning.png",
+    "xws": "st-discerning"
+  },
+  {
+    "name": "distracted",
+    "points": 129,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-distracted.png",
+    "xws": "st-istracted"
+  },
+  {
+    "name": "drowsy",
+    "points": 130,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-drowsy.png",
+    "xws": "st-drowsy"
+  },
+  {
+    "name": "elitist",
+    "points": 131,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-elitist.png",
+    "xws": "st-elitist"
+  },
+  {
+    "name": "exterminator",
+    "points": 132,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-exterminator.png",
+    "xws": "st-exterminator"
+  },
+  {
+    "name": "fearful",
+    "points": 133,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-fearful.png",
+    "xws": "st-fearful"
+  },
+  {
+    "name": "feeble",
+    "points": 134,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-feeble.png",
+    "xws": "st-feeble"
+  },
+  {
+    "name": "feral",
+    "points": 135,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-feral.png",
+    "xws": "feral"
+  },
+  {
+    "name": "finisher",
+    "points": 136,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-finisher.png",
+    "xws": "st-finisher"
+  },
+  {
+    "name": "hesitant",
+    "points": 137,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-hesitant.png",
+    "xws": "hesitant"
+  },
+  {
+    "name": "hothead",
+    "points": 138,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-hothead.png",
+    "xws": "st-hothead"
+  },
+  {
+    "name": "instigator",
+    "points": 139,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-instigator.png",
+    "xws": "instigator"
+  },
+  {
+    "name": "insulting",
+    "points": 140,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-insulting.png",
+    "xws": "st-insulting"
+  },
+  {
+    "name": "limping",
+    "points": 141,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-limping.png",
+    "xws": "st-limping"
+  },
+  {
+    "name": "lucky",
+    "points": 142,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-lucky.png",
+    "xws": "st-lucky"
+  },
+  {
+    "name": "marksman",
+    "points": 143,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-marksman.png",
+    "xws": "st-marksman"
+  },
+  {
+    "name": "miser",
+    "points": 144,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-miser.png",
+    "xws": "st-miser"
+  },
+  {
+    "name": "mugger",
+    "points": 145,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-mugger.png",
+    "xws": "st-mugger"
+  },
+  {
+    "name": "multitasker",
+    "points": 146,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-multitasker.png",
+    "xws": "st-multitasker"
+  },
+  {
+    "name": "paranoid",
+    "points": 147,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-paranoid.png",
+    "xws": "st-paranoid"
+  },
+  {
+    "name": "peaacemonger",
+    "points": 148,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-peacemonger.png",
+    "xws": "st-peaacemonger"
+  },
+  {
+    "name": "perforated",
+    "points": 149,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-perforated.png",
+    "xws": "st-perforated"
+  },
+  {
+    "name": "pickpocket",
+    "points": 150,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-pickpocket.png",
+    "xws": "st-pickpocket"
+  },
+  {
+    "name": "pincushion",
+    "points": 151,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-pincushion.png",
+    "xws": "st-pincushion"
+  },
+  {
+    "name": "prosperous",
+    "points": 152,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-prosperous.png",
+    "xws": "st-prosperous"
+  },
+  {
+    "name": "ravager",
+    "points": 153,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-ravager.png",
+    "xws": "st-ravager"
+  },
+  {
+    "name": "recluse",
+    "points": 154,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-recluse.png",
+    "xws": "st-recluse"
+  },
+  {
+    "name": "reserved",
+    "points": 155,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-reserved.png",
+    "xws": "st-reserved"
+  },
+  {
+    "name": "restless",
+    "points": 156,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-restless.png",
+    "xws": "st-restless"
+  },
+  {
+    "name": "retaliator",
+    "points": 157,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-retaliator.png",
+    "xws": "st-retaliator"
+  },
+  {
+    "name": "ritualistic",
+    "points": 158,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-ritualistic.png",
+    "xws": "st-ritualistic"
+  },
+  {
+    "name": "sociable",
+    "points": 159,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-sociable.png",
+    "xws": "st-sociable"
+  },
+  {
+    "name": "shadow",
+    "points": 160,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-shadow.png",
+    "xws": "st-shadow"
+  },
+  {
+    "name": "sharpshooter",
+    "points": 161,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-sharpshooter.png",
+    "xws": "st-sharpshooter"
+  },
+  {
+    "name": "slayer",
+    "points": 162,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-slayer.png",
+    "xws": "st-slayer"
+  },
+  {
+    "name": "sleepless",
+    "points": 163,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-sleepless.png",
+    "xws": "st-sleepless"
+  },
+  {
+    "name": "sober",
+    "points": 164,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-sober.png",
+    "xws": "st-sober"
+  },
+  {
+    "name": "sociable",
+    "points": 165,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-sociable.png",
+    "xws": "st-sociable"
+  },
+  {
+    "name": "specialized",
+    "points": 166,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-specialized.png",
+    "xws": "st-specialized"
+  },
+  {
+    "name": "stalwart",
+    "points": 167,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-stalwart.png",
+    "xws": "st-stalwart"
+  },
+  {
+    "name": "stubborn",
+    "points": 168,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-stubborn.png",
+    "xws": "st-stubborn"
+  },
+  {
+    "name": "thorough",
+    "points": 169,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-thorough.png",
+    "xws": "st-thorough"
+  },
+  {
+    "name": "untouchable",
+    "points": 170,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-untouchable.png",
+    "xws": "st-untouchable"
+  },
+  {
+    "name": "wasteful",
+    "points": 171,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-wasteful.png",
+    "xws": "st-wasteful"
+  },
+  {
+    "name": "winded",
+    "points": 172,
+    "expansion": "Satire",
+    "image": "battle-goals/satire/st-winded.png",
+    "xws": "st-winded"
   }
 ]

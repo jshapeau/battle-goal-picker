@@ -14,12 +14,18 @@
                             <div class="options-row flex">
                                 <mat-form-field appearance="fill">
                                     <mat-label>Scenario Number</mat-label>
-                                    <input matInput id="scenarioNumber" [(ngModel)]="userSettings.scenarioNumber" placeholder="Scenario Number" (focusout)="(this.cacheData('scenarioNumber', (this.userSettings.scenarioNumber)))">
+                                    <input matInput id="scenarioNumber" 
+                                        [(ngModel)]="userSettings.scenarioNumber" 
+                                        placeholder="Scenario Number" 
+                                        (focusout)="(this.cacheData('scenarioNumber', (this.userSettings.scenarioNumber)))">
                                 </mat-form-field>
 
                                 <mat-form-field appearance="fill">
                                     <mat-label>Attempt Number</mat-label>
-                                    <input matInput id="attemptNumber" [(ngModel)]="userSettings.attemptNumber" placeholder="Attempt Number" (focusout)="(this.cacheData('attemptNumber', (this.userSettings.attemptNumber)))">
+                                    <input matInput id="attemptNumber" 
+                                        [(ngModel)]="userSettings.attemptNumber" 
+                                        placeholder="Attempt Number" 
+                                        (focusout)="(this.cacheData('attemptNumber', (this.userSettings.attemptNumber)))">
                                 </mat-form-field>
                             </div>
 
@@ -39,33 +45,58 @@
                             <div class="options-row flex">
                                 <mat-form-field appearance="fill">
                                     <mat-label for="number-draws">Number of Draws: </mat-label>
-                                    <input matInput type="number" [(ngModel)]="userSettings.numberToDraw" max="6" placeholder="number of draws" (focusout)="(this.cacheData('numberToDraw', (this.userSettings.numberToDraw)))">
+                                    <input matInput type="number" 
+                                        [(ngModel)]="userSettings.numberToDraw" 
+                                        max="6" placeholder="number of draws" 
+                                        (focusout)="(this.cacheData('numberToDraw', (this.userSettings.numberToDraw)))">
                                 </mat-form-field>
                                 <mat-form-field appearance="fill">
                                     <mat-label for="player-number">Player Number: </mat-label>
-                                    <input matInput type="number" [(ngModel)]="userSettings.playerNumber" type="number" max="6" placeholder="player number" (focusout)="(this.cacheData('playerNumber', (this.userSettings.playerNumber)))">
+                                    <input matInput type="number" 
+                                        [(ngModel)]="userSettings.playerNumber" 
+                                        type="number" 
+                                        max="6" 
+                                        placeholder="player number" 
+                                        (focusout)="(this.cacheData('playerNumber', (this.userSettings.playerNumber)))">
                                 </mat-form-field>
                             </div>
                             <div class="options-row flex">
                                 <mat-form-field appearance="fill">
                                     <mat-label>Party Name</mat-label>
-                                    <input matInput id="party-name" [(ngModel)]="userSettings.partyName" placeholder="Party Name" (focusout)="(this.cacheData('partyName', (this.userSettings.partyName)))">
+                                    <input matInput id="party-name" 
+                                        [(ngModel)]="userSettings.partyName" 
+                                        placeholder="Your Party Name" 
+                                        (focusout)="(this.cacheData('partyName', (this.userSettings.partyName)))">
                                 </mat-form-field>
                             </div>
                             <div class="options-row flex">
-                                <mat-button-toggle-group [(ngModel)]="userSettings.expansion" name="expansion" aria-label="Expansion" (change)="this.swapTheme($event.value)">
-                                    <mat-button-toggle value="Gloomhaven">Gloomhaven</mat-button-toggle>
-                                    <mat-button-toggle value="Frosthaven">Frosthaven</mat-button-toggle>
-                                    <mat-button-toggle value="Jaws Of The Lion">Jaws of the Lion</mat-button-toggle>
-                                    <!-- <mat-button-toggle value="crimson scales">Crimson Scales</mat-button-toggle> -->
+                                <mat-button-toggle-group  [ngModel]="userSettings.expansion" 
+                                                            (ngModelChange)="userSettings.expansion = findExpansions($event.name) ?? registeredExpansions[0]" 
+                                                            name="expansion" 
+                                                            aria-label="Expansion" 
+                                                            [value]="findExpansions(userSettings.expansion.name)" 
+                                                            (change)="this.cacheData('expansion', userSettings.expansion)"
+                                                            (change)="this.swapTheme(userSettings.expansion.name)">
+                                    <mat-button-toggle *ngFor="let expansion of registeredExpansions" [value]="expansion">{{expansion.friendlyName}}</mat-button-toggle>
                                 </mat-button-toggle-group>
                             </div>
+                            <div class="options-row flex">
+                                <div id="cardExpansions">
+                                    <div class="expansionContainer" 
+                                        [ngClass]="expansion.name != userSettings.expansion.name ? 'hidden' : ''" 
+                                        *ngFor="let expansion of registeredExpansions" 
+                                        [id]="expansion.name + '-packs'">
+                                        <mat-checkbox [color]="'primary'" 
+                                            *ngFor="let cardPack of expansion.cardPacks" 
+                                            [checked]="userSettings.expansionCardPacks.indexOf(cardPack.name) != -1"
+                                            (change)="toggleCardPack($event.checked, cardPack.name)"
+                                            (change)="this.cacheData('expansionCardPacks', userSettings.expansionCardPacks)">{{cardPack.friendlyName}}</mat-checkbox>
+                                    </div>
+                                </div>
+                            </div>
                             <p>&nbsp;<a href="https://github.com/jshapeau/battle-goal-picker" target="_blank">View on GitHub</a></p>
-                            
-                            
                         </div>
                     </mat-tab>
-
             </mat-tab-group>
         </mat-card-content>
     </mat-card>

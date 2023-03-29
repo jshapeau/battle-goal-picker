@@ -1,0 +1,29 @@
+
+[
+    {
+        "name": "Gloomhaven",
+        "friendlyName": "Gloomhaven",
+        "themeName": "gloomhaven-theme",
+        "cardPacks": [
+            {
+                "name": "Satire",
+                "friendlyName": "Satire's Extended Battle Goals"
+            }
+        ]
+    },
+    {
+        "name": "Frosthaven",
+        "friendlyName": "Frosthaven",
+        "themeName": "frosthaven-theme",
+        "cardPacks": []
+    },
+    {
+        "name": "Jaws Of The Lion",
+        "friendlyName": "Jaws of the Lion",
+        "themeName": "gloomhaven-theme",
+        "cardPacks": []
+    }
+
+]
+
+

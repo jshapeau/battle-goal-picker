@@ -16,11 +16,26 @@ export type DataTypes = {
 }
 
 export interface UserSettings {
+    [key: string]: any
     partyName: string
     numberToDraw: number
     playerNumber: number
-    expansion: string
+    expansion: Expansion
+    expansionCardPacks: string[]
     scenarioNumber: string
     attemptNumber: string
     theme: string
-  }
+    version: number
+}
+
+export interface ExpansionCardPack {
+    name: string
+    friendlyName: string
+}
+
+export interface Expansion {
+    name: string
+    themeName: string
+    friendlyName: string
+    cardPacks: ExpansionCardPack[]
+}

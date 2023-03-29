@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs'
 import { BattleGoal, Item } from './types'
 
 export interface DataSource<DataType> {
-    find (name?: string, expansion?: string): Observable<DataType[]>
+    find (name?: string[], expansion?: string[]): Observable<DataType[]>
     findAll (): Observable<DataType[]>
 }
 
@@ -40,10 +40,10 @@ export class JsonDataSource<DataType extends Item> implements DataSource<DataTyp
      * @param expansion Filter criteria for item expansion
      * @returns Array representing the intersection of the provided paramters.
      */
-    find(id?: string, expansion?: string ): Observable<DataType[]> {
+    find(id?: string[], expansion?: string[] ): Observable<DataType[]> {
         return of(this.data.filter(item => 
-                                    (item.name == id || !id) &&
-                                    (item.expansion == expansion || !expansion)
+                                    (id?.includes(item.name) || !id) &&
+                                    (expansion?.includes(item.expansion) || !expansion)
                                 ));
     }
 
@@ -63,8 +63,6 @@ export class LocalBattleGoalDataSource extends JsonDataSource<BattleGoal> {
     }
 }
 
-
-
 @Injectable({
     providedIn: 'root'
 })
@@ -82,7 +80,11 @@ export class DataService<DataType> {
      * @param expansion Filter criteria for item expansion
      * @returns Observable providing an array representing the intersection of the provided paramters.
      */
-    find(id?: string, expansion?: string): Observable<DataType[]> {
+    // find(id?: string, expansion?: string): Observable<DataType[]> {
+    //     return this.dataSource.find(undefined, expansion)
+    // }
+
+    find(id?: string[], expansion?: string[]): Observable<DataType[]> {
         return this.dataSource.find(undefined, expansion)
     }
 
@@ -103,12 +105,12 @@ export class LocalService {
 
     constructor() { }
 
-    public saveData(key: string, value: string) {
-        localStorage.setItem(key, value)
+    public saveData(key: string, value: any) {
+        localStorage.setItem(key, JSON.stringify(value))
     }
 
-    public getData(key: string): string | null {
-        return localStorage.getItem(key)
+    public getData(key: string): any {
+        return JSON.parse(localStorage.getItem(key) ?? "null")
     }
 
     public removeData(key: string) {

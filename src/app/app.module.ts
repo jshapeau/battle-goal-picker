@@ -26,6 +26,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 //DATA SOURCES
 import JsonData from '../assets/data/battlegoals.json';
@@ -59,7 +60,8 @@ import JsonData from '../assets/data/battlegoals.json';
     MatSidenavModule,
     MatTabsModule,
     MatDialogModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCheckboxModule
   ],
   providers: [
     { provide: 'BattlegoalDataSource', useFactory: () => (new LocalBattleGoalDataSource(JsonData)) },

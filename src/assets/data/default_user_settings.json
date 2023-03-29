@@ -1,9 +1,16 @@
 {
-    "partyName": "Your Party Name",
+    "partyName": "",
     "numberToDraw": 3,
     "playerNumber": 1,
-    "expansion": "Frosthaven",
+    "expansion": {
+        "name": "Frosthaven",
+        "themeName": "frosthaven-theme",
+        "friendlyName": "Frosthaven",
+        "cardPacks": []
+      },
+    "expansionCardPacks": [],
     "scenarioNumber": "1",
     "attemptNumber": "1",
-    "theme": "frosthaven-theme"
+    "theme": "frosthaven-theme",
+    "version": 1
   }
